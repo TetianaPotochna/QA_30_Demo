@@ -58,7 +58,7 @@ public class XpathSelectors {
 
         WebElement outputForm = driver.findElement(By.xpath("//div[@id='output']"));
         System.out.println(outputForm.getText());
-    
+
 
 
         driver.quit();
