@@ -75,7 +75,7 @@ public class PracticeFormsPage extends BasePage {
      return validateTextInElement(modalMessage,"Thanks for submitting the form");
     }
 
-    public boolean validateTextInElement(){
+    public boolean validateModalMessageNegative(){
         return validateTextInElement(modalMessage, "Negative");
     }
 
