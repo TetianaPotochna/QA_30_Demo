@@ -34,7 +34,7 @@ public class PracticeFormsPage extends BasePage {
     @FindBy(id = "dateOfBirthInput")
     WebElement fieldDateOfBirth;
 
-    @FindBy(id="subjectsInput")
+    @FindBy(id = "subjectsInput")
     WebElement fieldSubjects;
 
     @FindBy(id = "currentAddress")
@@ -48,6 +48,9 @@ public class PracticeFormsPage extends BasePage {
 
     @FindBy(id = "submit")
     WebElement submit;
+
+    @FindBy(id = "example-modal-sizes-title-lg")
+    WebElement modalMessage;
 
 
     public void typePracticeForm(Student student) {
@@ -68,7 +71,15 @@ public class PracticeFormsPage extends BasePage {
 
     }
 
-    private void typeStateCity(String state, String city){
+    public boolean validateModalMessage(){
+     return validateTextInElement(modalMessage,"Thanks for submitting the form");
+    }
+
+    public boolean validateTextInElement(){
+        return validateTextInElement(modalMessage, "Negative");
+    }
+
+    private void typeStateCity(String state, String city) {
         inputState.sendKeys(state);
         inputState.sendKeys(Keys.ENTER);
 
@@ -76,9 +87,9 @@ public class PracticeFormsPage extends BasePage {
         inputCity.sendKeys(Keys.ENTER);
     }
 
-    private void typeHobbies(List<Hobbies> hobbies){
-        for (Hobbies h: hobbies){
-            switch (h){
+    private void typeHobbies(List<Hobbies> hobbies) {
+        for (Hobbies h : hobbies) {
+            switch (h) {
                 case MUSIC:
                     driver.findElement(By.xpath(h.getLocator())).click();
                     break;
@@ -110,10 +121,11 @@ public class PracticeFormsPage extends BasePage {
         fieldDateOfBirth.sendKeys(Keys.ENTER);
 
     }
-    private void typeSubjects(String subjects){
+
+    private void typeSubjects(String subjects) {
         fieldSubjects.click();
         String[] arr = subjects.split(",");
-        for (String s: arr) {
+        for (String s : arr) {
             fieldSubjects.sendKeys(s);
             fieldSubjects.sendKeys(Keys.ENTER);
         }
